@@ -1,0 +1,17 @@
+ridge_width       1.8
+ridge_keelwidth   0.3
+ridge_keelheight  0.4
+ridge_length      1.5
+ridge_porosity    0.4
+
+rubble_length    0.1
+rubble_width     0.1
+rubble_thickness 0.03
+rho_ice          900
+youngs           1.0d+07
+
+coh_coeff     0.001
+gamma_n       0.5
+mu            1.5
+
+frac          0.4

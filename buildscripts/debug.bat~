@@ -1,0 +1,31 @@
+@echo off
+
+mkdir -p ./debug/bin ./debug/obj ./debug/mod ./output/save ./output/vtk ./output/csv ./output/ridge
+
+gfortran -fcheck=all -fbounds-check -fbacktrace -Og -Wall -Wextra -pedantic -c type_ContactData.f08
+gfortran -fcheck=all -fbounds-check -fbacktrace -Og -Wall -Wextra -pedantic -c type_AABB.f08
+gfortran -fcheck=all -fbounds-check -fbacktrace -Og -Wall -Wextra -pedantic -c type_Quaternion.f08
+gfortran -fcheck=all -fbounds-check -fbacktrace -Og -Wall -Wextra -pedantic -c type_Ridge.f08
+gfortran -fcheck=all -fbounds-check -fbacktrace -Og -Wall -Wextra -pedantic -c type_Iceblock.f08
+gfortran -fcheck=all -fbounds-check -fbacktrace -Og -Wall -Wextra -pedantic -c type_Element.f08
+gfortran -fcheck=all -fbounds-check -fbacktrace -Og -Wall -Wextra -pedantic -c type_Wall.f08
+
+gfortran -fcheck=all -fbounds-check -fbacktrace -Og -Wall -Wextra -pedantic -c mod_Constants.f08
+gfortran -fcheck=all -fbounds-check -fbacktrace -Og -Wall -Wextra -pedantic -c mod_Functions.f08
+gfortran -fcheck=all -fbounds-check -fbacktrace -Og -Wall -Wextra -pedantic -c mod_Global.f08
+gfortran -fcheck=all -fbounds-check -fbacktrace -Og -Wall -Wextra -pedantic -c mod_Output.f08
+gfortran -fcheck=all -fbounds-check -fbacktrace -Og -Wall -Wextra -pedantic -c mod_Neighbour.f08
+gfortran -fcheck=all -fbounds-check -fbacktrace -Og -Wall -Wextra -pedantic -c mod_OverlapComputation.f08
+gfortran -fcheck=all -fbounds-check -fbacktrace -Og -Wall -Wextra -pedantic -c mod_Particle.f08
+gfortran -fcheck=all -fbounds-check -fbacktrace -Og -Wall -Wextra -pedantic -c mod_Force.f08
+gfortran -fcheck=all -fbounds-check -fbacktrace -Og -Wall -Wextra -pedantic -c mod_ImportExport.f08
+gfortran -fcheck=all -fbounds-check -fbacktrace -Og -Wall -Wextra -pedantic -c mod_PredCorr.f08
+gfortran -fdump-core -fcheck=all -fbounds-check -fbacktrace -Og -Wall -Wextra -pedantic -c Main.f08
+
+gfortran *.o -Og -fdump-core -fcheck=all -fbounds-check -fbacktrace -o numridge
+
+copy numridge.exe ./debug/bin
+move *.mod ./debug/mod
+move *.o ./debug/obj
+
+
